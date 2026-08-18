@@ -4,15 +4,15 @@
   "total_categories": 24,
   "changes": {
     "minipc": {
-      "new_entries": 511,
+      "new_entries": 336,
       "dropped": 319,
       "rank_changes": 180,
       "price_changes": 53
     },
     "tablet": {
-      "new_entries": 842,
-      "dropped": 247,
-      "rank_changes": 154,
+      "new_entries": 245,
+      "dropped": 248,
+      "rank_changes": 153,
       "price_changes": 47
     }
   },
