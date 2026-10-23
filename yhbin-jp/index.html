@@ -151,7 +151,7 @@ p { margin: 0; }
   background: transparent; color: var(--muted);
 }
 .filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-.products { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.products { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 @media (max-width: 380px) { .products { grid-template-columns: 1fr; } }
 .product {
   display: grid; grid-template-rows: auto auto 1fr auto; min-width: 0;
@@ -171,6 +171,11 @@ p { margin: 0; }
 .product-head { padding: 22px 22px 6px; display: grid; gap: 6px; }
 .product-series { font: 400 12px/1.4 var(--ff-mark); letter-spacing: .24em; color: var(--muted); }
 .product-head h3 { font-size: 19px; font-weight: 700; line-height: 1.45; }
+.rating { display: flex; align-items: center; gap: 8px; font: 500 13px/1 var(--ff-mono); }
+.rating small { font: 400 12px/1 var(--ff-body); color: var(--muted); }
+.stars { --r: 0; position: relative; display: inline-block; font-size: 14px; letter-spacing: 2px; line-height: 1; }
+.stars::before { content: "★★★★★"; color: var(--line); }
+.stars::after { content: "★★★★★"; color: var(--accent); position: absolute; inset: 0; width: calc(var(--r) / 5 * 100%); overflow: hidden; white-space: nowrap; }
 .specs { margin: 0; padding: 10px 22px 18px; display: grid; }
 .specs div { display: grid; grid-template-columns: 6.5em 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
 .specs div:last-child { border-bottom: 0; }
@@ -348,10 +353,10 @@ p { margin: 0; }
       </div>
 
       <dl class="spec-plate" id="specPlate">
-        <div><dt>CPU</dt><dd>Core i9<small>まで</small></dd></div>
+        <div><dt>CPU</dt><dd>Core i7<small>第13世代まで</small></dd></div>
         <div><dt>Memory</dt><dd>32<small>GB</small></dd></div>
         <div><dt>Storage</dt><dd>1<small>TB NVMe</small></dd></div>
-        <div><dt>Display</dt><dd>16<small>型 2.5K</small></dd></div>
+        <div><dt>Display</dt><dd>16<small>型 3K</small></dd></div>
       </dl>
     </div>
   </section>
@@ -366,13 +371,13 @@ p { margin: 0; }
 
       <div class="filters" role="group" aria-label="用途で絞り込む">
         <button type="button" id="f-all" data-filter="all" aria-pressed="true">すべて</button>
-        <button type="button" id="f-creator" data-filter="creator" aria-pressed="false">クリエイター・ハイエンド</button>
-        <button type="button" id="f-business" data-filter="business" aria-pressed="false">ビジネス・Office搭載</button>
-        <button type="button" id="f-mobile" data-filter="mobile" aria-pressed="false">モバイル・軽量</button>
+        <button type="button" id="f-performance" data-filter="performance" aria-pressed="false">ハイパフォーマンス</button>
+        <button type="button" id="f-business" data-filter="business" aria-pressed="false">ビジネス・大画面</button>
+        <button type="button" id="f-entry" data-filter="entry" aria-pressed="false">エントリー・学習用</button>
       </div>
 
       <div class="products" id="products"></div>
-      <p class="lineup-note">※ 掲載のスペック・価格は代表的な構成の参考値です。構成・価格・在庫は予告なく変更される場合があります。最新情報はAmazon.co.jpの各商品ページをご確認ください。</p>
+      <p class="lineup-note">※ 価格・評価は2026年10月時点のAmazon.co.jp掲載情報（税込）です。価格・在庫・構成は予告なく変更される場合があります。最新情報は各商品ページをご確認ください。</p>
     </div>
   </section>
 
@@ -381,28 +386,28 @@ p { margin: 0; }
       <div class="section-head">
         <p class="eyebrow">Engineering</p>
         <h2>毎日使う道具だから、見えない部分まで。</h2>
-        <p>スペック表の数字だけでなく、長時間の作業で差が出る放熱・画面・入力・電源の4点を重視して設計しています。</p>
+        <p>処理性能・画面・セキュリティ・接続性。長時間の仕事や創作で差が出る4つのポイントを、ラインナップ全体で押さえています。</p>
       </div>
       <div class="eng-grid">
         <article class="eng">
-          <p class="metric">THERMAL</p>
-          <h3>高負荷でも性能を保つ冷却設計</h3>
-          <p>デュアルファンと大型ヒートパイプで熱を素早く排出。動画の書き出しや大量のタブを開いた作業でも、クロックダウンを抑えます。</p>
+          <p class="metric">PERFORMANCE ― i7-13620H / 4.9GHz</p>
+          <h3>第13世代 Core i7、10コア16スレッド</h3>
+          <p>最上位モデルは最大4.9GHzで動作するCore i7-13620Hと32GBメモリを搭載。動画編集やゲーム、重いデータ処理もこなします。GTX1060搭載モデルもご用意しています。</p>
         </article>
         <article class="eng">
-          <p class="metric">DISPLAY</p>
-          <h3>細部まで見える高精細ディスプレイ</h3>
-          <p>16型の大画面と高解像度パネルで、表計算も写真編集も広く快適に。ノングレア仕上げで長時間でも目が疲れにくい設計です。</p>
+          <p class="metric">DISPLAY ― 3072 × 1920</p>
+          <h3>16型 3K、16:10の広い作業領域</h3>
+          <p>3K（3072×1920）やWUXGA（1920×1200）の16:10パネルで、縦方向の情報量が増え、表計算や資料作成がはかどります。タッチパネル対応モデルもあります。</p>
         </article>
         <article class="eng">
-          <p class="metric">INPUT</p>
+          <p class="metric">SECURITY ― 指紋 / 顔認証</p>
           <h3>指紋・顔認証とバックライトキーボード</h3>
-          <p>ワンタッチでログインできる生体認証と、暗い場所でも打ちやすいバックライトキーボード。180度開くヒンジで対面での共有もスムーズです。</p>
+          <p>パスワード入力なしで素早く安全にログイン。バックライトキーボードで暗い場所でも打ちやすく、多くのモデルでOffice 2024をプリインストールしています。</p>
         </article>
         <article class="eng">
-          <p class="metric">POWER</p>
-          <h3>USB Type-C対応で、充電も接続もシンプルに</h3>
-          <p>大容量バッテリーを搭載し、外出先でも安心。Type-Cポートからのデータ転送や周辺機器の接続にも対応します。</p>
+          <p class="metric">CONNECTIVITY ― RJ45 / HDMI / Type-C</p>
+          <h3>有線LANからType-Cまで、変換なしで接続</h3>
+          <p>RJ45有線LAN・HDMI・USB 3.0・Type-Cを搭載するモデルなら、オフィスでも会議室でもアダプター不要。最大8000mAhの大容量バッテリーで外出先でも安心です。</p>
         </article>
       </div>
     </div>
@@ -499,7 +504,7 @@ p { margin: 0; }
         </div>
         <div class="contact-card">
           <div class="row"><span class="label">Brand</span><span class="value">YHBIN（ワイエイチビン）</span></div>
-          <div class="row"><span class="label">Store</span><span class="value">Amazon.co.jp 公式ストア</span></div>
+          <div class="row"><span class="label">Store</span><span class="value">Amazon.co.jp 公式ストア「YHBIN JAPAN OFFICIAL」</span></div>
           <div class="row"><span class="label">Seller ID</span><span class="value" style="font-family:var(--ff-mono)">AQVOPA1MY2ES1</span></div>
           <!-- 要確認: 正式なメールアドレスがあれば下の行のコメントを外して記入 -->
           <!-- <div class="row"><span class="label">Email</span><span class="value">support@example.com</span></div> -->
@@ -552,32 +557,44 @@ p { margin: 0; }
 const STORE = "https://www.amazon.co.jp/s?me=AQVOPA1MY2ES1&marketplaceID=A1VC38T7YXB528";
 const dp = asin => "https://www.amazon.co.jp/dp/" + asin;
 
-/* 製品データ。ASINが分かるモデルは asin を入れると商品ページに直接リンクします。
-   image は任意（空なら線画イラストを表示）。price は税込の参考価格（円）。 */
+/* 製品データ（Amazon.co.jp 出品者 YHBIN JAPAN OFFICIAL / 2026年10月時点）。
+   asin を入れると商品ページへ直接リンクします。price は税込（円）、rating は星評価、reviews は評価数。 */
 const PRODUCTS = [
   {
-    series: "YHBIN PRO X", category: "creator", badge: "Flagship",
-    name: "16型 ハイエンド クリエイターモデル",
-    specs: { CPU: "Intel Core i9-13900H", メモリ: "32GB DDR5", ストレージ: "1TB NVMe SSD", ディスプレイ: "16型 2.5K 165Hz", OS: "Windows 11 Pro", 重量: "約2.1kg" },
-    price: null, asin: "", image: ""
+    series: "GAMING / CREATOR", category: "performance", badge: "Flagship",
+    name: "Core i7-13620H ゲーミングノートパソコン",
+    specs: { CPU: "Core i7-13620H（10コア16スレッド / 最大4.9GHz）", メモリ: "32GB DDR4", ストレージ: "960GB NVMe SSD", OS: "Windows 11 Pro / Office 2024", 機能: "指紋認証 / RJ45有線LAN / Webカメラ" },
+    price: 145999, rating: 3.9, reviews: 17, asin: "B0CKXZ3S1D", image: "https://m.media-amazon.com/images/I/61dI0nf6KOL._AC_SL1000_.jpg"
   },
   {
-    series: "YHBIN PRO", category: "creator", badge: "Performance",
-    name: "16型 高性能 マルチタスクモデル",
-    specs: { CPU: "Intel Core i7-1255U", メモリ: "32GB DDR4", ストレージ: "1TB NVMe SSD", ディスプレイ: "16型 2.5K IPS", OS: "Windows 11 Pro", 重量: "約1.9kg" },
-    price: null, asin: "", image: ""
+    series: "PERFORMANCE 15.6", category: "performance", badge: "32GB + 1TB",
+    name: "Core i7-1255U 15.6インチ 高性能モデル",
+    specs: { CPU: "Core i7-1255U（10コア12スレッド / 最大4.7GHz）", メモリ: "32GB DDR4", ストレージ: "1TB NVMe SSD", ディスプレイ: "15.6インチ", OS: "Windows 11 Pro / Office搭載", 機能: "指紋認証 / バックライトキーボード / Type-C" },
+    price: 129966, rating: 4.7, reviews: 4, asin: "B0H45CDZS9", image: "https://m.media-amazon.com/images/I/71lCWHTi4fL._AC_SL1000_.jpg"
   },
   {
-    series: "YHBIN BUSINESS", category: "business", badge: "Office 2024",
-    name: "16型 タッチパネル Office 2024搭載モデル",
-    specs: { CPU: "Intel Core i3-8109U", メモリ: "16GB DDR4", ストレージ: "512GB SSD", ディスプレイ: "16型 タッチパネル", OS: "Windows 11 Pro", 機能: "顔認証 / 180度開閉 / 7色バックライト" },
-    price: 55966, asin: "B0CW9C86BC", image: "https://m.media-amazon.com/images/I/81H1QWVS2VL.jpg"
+    series: "GRAPHICS 16", category: "performance", badge: "GTX1060",
+    name: "GTX1060搭載 16インチ Core i7 モデル",
+    specs: { CPU: "Core i7-6700HQ", GPU: "NVIDIA GeForce GTX1060", メモリ: "32GB（デュアルスロット）", ストレージ: "512GB SSD", ディスプレイ: "16インチ WUXGA 1920×1200", OS: "Windows 11 Pro / Office 2024" },
+    price: 80999, rating: 5.0, reviews: 2, asin: "B0H6CX1BWL", image: "https://m.media-amazon.com/images/I/71xOQjDVw-L._AC_SL1000_.jpg"
   },
   {
-    series: "YHBIN AIR", category: "mobile", badge: "Lightweight",
-    name: "14型 薄型軽量 モバイルモデル",
-    specs: { CPU: "Intel Core i5-1235U", メモリ: "16GB DDR4", ストレージ: "512GB NVMe SSD", ディスプレイ: "14型 FHD IPS", OS: "Windows 11 Pro", 重量: "約1.4kg" },
-    price: null, asin: "", image: ""
+    series: "3K DISPLAY 16", category: "business", badge: "3K 16:10",
+    name: "16インチ 3K ディスプレイモデル",
+    specs: { CPU: "Core i5-1038NG7", メモリ: "16GB DDR4", ストレージ: "512GB NVMe SSD", ディスプレイ: "16インチ 3K 3072×1920", OS: "Windows 11 Pro / Office 2024", 機能: "静音放熱 / 6000mAh / WiFi5" },
+    price: 69966, rating: 4.1, reviews: 9, asin: "B0FKTF3723", image: "https://m.media-amazon.com/images/I/71-D8OWZnZL._AC_SL1000_.jpg"
+  },
+  {
+    series: "TOUCH 16", category: "business", badge: "Touch",
+    name: "16インチ タッチパネル Office 2024搭載",
+    specs: { CPU: "Core i3-8109U", メモリ: "16GB DDR4", ストレージ: "512GB SSD", ディスプレイ: "16インチ タッチパネル", OS: "Windows 11 Pro / Office 2024", 機能: "顔認証 / 180度開閉 / 7色バックライト" },
+    price: 55966, rating: 4.1, reviews: 14, asin: "B0CW9C86BC", image: "https://m.media-amazon.com/images/I/81H1QWVS2VL._AC_SL1000_.jpg"
+  },
+  {
+    series: "ESSENTIAL 15.6", category: "entry", badge: "8000mAh",
+    name: "15.6インチ AMD 3050E スタンダードモデル",
+    specs: { CPU: "AMD 3050E", メモリ: "8GB", ストレージ: "256GB / 512GB SSD", ディスプレイ: "15.6インチ FHD IPS", OS: "Windows 11 Pro / Office 2024", 機能: "指紋認証 / テンキー / 8000mAh" },
+    price: 39990, rating: 4.4, reviews: 10, asin: "B0GCZJL488", image: "https://m.media-amazon.com/images/I/714zAU1wv5L._AC_SL1000_.jpg"
   }
 ];
 
@@ -593,11 +610,13 @@ function card(p) {
     : LAPTOP_SVG;
   const rows = Object.entries(p.specs).map(([k, v]) => "<div><dt>" + esc(k) + "</dt><dd>" + esc(v) + "</dd></div>").join("");
   const price = p.price
-    ? yen(p.price) + "<small>税込・参考価格</small>"
+    ? yen(p.price) + "<small>税込・2026年10月時点</small>"
     : '<span style="font-size:15px">価格はストアで</span><small>最新価格はAmazonでご確認ください</small>';
   return '<article class="product" data-category="' + p.category + '">' +
     '<div class="product-media">' + media + '<span class="badge">' + esc(p.badge) + '</span></div>' +
-    '<div class="product-head"><p class="product-series">' + esc(p.series) + '</p><h3>' + esc(p.name) + '</h3></div>' +
+    '<div class="product-head"><p class="product-series">' + esc(p.series) + '</p><h3>' + esc(p.name) + '</h3>' +
+    (p.reviews ? '<p class="rating" aria-label="Amazon評価 5つ星のうち' + p.rating.toFixed(1) + '"><span class="stars" style="--r:' + p.rating + '"></span>' + p.rating.toFixed(1) + '<small>（' + p.reviews + '件の評価）</small></p>' : '') +
+    '</div>' +
     '<dl class="specs">' + rows + '</dl>' +
     '<div class="product-foot"><p class="price">' + price + '</p>' +
     '<a class="btn btn-primary" href="' + href + '" target="_blank" rel="noopener">Amazonで見る</a></div>' +
