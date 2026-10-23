@@ -5,7 +5,7 @@
 
 - products/<ASIN>.html を製品ごとに生成
 - index.html の /* BUILD:PRODUCTS */ ... /* END:PRODUCTS */ を書き換え
-- 販売価格 = amazon_price + markup（products.json の markup、既定 1000円）
+- 販売価格 = amazon_price + markup（products.json の markup、円）
 """
 import html
 import json
@@ -24,7 +24,7 @@ e = html.escape
 
 
 def sale_price(p):
-    return p["amazon_price"] + DATA.get("markup", 1000)
+    return p["amazon_price"] + DATA.get("markup", 0)
 
 
 def yen(n):
@@ -155,7 +155,8 @@ def detail_page(p, css):
         for o in DATA["products"] if o["asin"] != asin)
     note = ("" if p.get("checkout_url") else
             '<p class="buy-note">※ 現在、ご購入手続きはAmazon.co.jpの商品ページで承っています。'
-            'Amazonでの販売価格は当サイトと異なる場合があります。</p>')
+            + ('Amazonでの販売価格は当サイトと異なる場合があります。' if DATA.get("markup", 0) else '')
+            + '</p>')
     ld = {
         "@context": "https://schema.org", "@type": "Product",
         "name": p["title"], "sku": asin, "brand": {"@type": "Brand", "name": "YHBIN"},
