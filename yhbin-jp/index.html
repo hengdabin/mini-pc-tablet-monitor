@@ -558,47 +558,55 @@ const STORE = "https://www.amazon.co.jp/s?me=AQVOPA1MY2ES1&marketplaceID=A1VC38T
 const dp = asin => "https://www.amazon.co.jp/dp/" + asin;
 
 /* 製品データ（Amazon.co.jp 出品者 YHBIN JAPAN OFFICIAL / 2026年10月時点）。
-   asin を入れると商品ページへ直接リンクします。price は税込（円）、rating は星評価、reviews は評価数。 */
+   asin を入れると商品ページへ直接リンクします。price は税込（円）、rating は星評価、reviews は評価数。
+   image は images/ 内のローカル画像（fetch-images.sh で取得）、remote はAmazonの元画像URL。 */
 const PRODUCTS = [
   {
     series: "GAMING / CREATOR", category: "performance", badge: "Flagship",
     name: "Core i7-13620H ゲーミングノートパソコン",
     specs: { CPU: "Core i7-13620H（10コア16スレッド / 最大4.9GHz）", メモリ: "32GB DDR4", ストレージ: "960GB NVMe SSD", OS: "Windows 11 Pro / Office 2024", 機能: "指紋認証 / RJ45有線LAN / Webカメラ" },
-    price: 145999, rating: 3.9, reviews: 17, asin: "B0CKXZ3S1D", image: "https://m.media-amazon.com/images/I/61dI0nf6KOL._AC_SL1000_.jpg"
+    price: 145999, rating: 3.9, reviews: 17, asin: "B0CKXZ3S1D", image: "images/B0CKXZ3S1D.jpg", remote: "https://m.media-amazon.com/images/I/61dI0nf6KOL._AC_SL1000_.jpg"
   },
   {
     series: "PERFORMANCE 15.6", category: "performance", badge: "32GB + 1TB",
     name: "Core i7-1255U 15.6インチ 高性能モデル",
     specs: { CPU: "Core i7-1255U（10コア12スレッド / 最大4.7GHz）", メモリ: "32GB DDR4", ストレージ: "1TB NVMe SSD", ディスプレイ: "15.6インチ", OS: "Windows 11 Pro / Office搭載", 機能: "指紋認証 / バックライトキーボード / Type-C" },
-    price: 129966, rating: 4.7, reviews: 4, asin: "B0H45CDZS9", image: "https://m.media-amazon.com/images/I/71lCWHTi4fL._AC_SL1000_.jpg"
+    price: 129966, rating: 4.7, reviews: 4, asin: "B0H45CDZS9", image: "images/B0H45CDZS9.jpg", remote: "https://m.media-amazon.com/images/I/71lCWHTi4fL._AC_SL1000_.jpg"
   },
   {
     series: "GRAPHICS 16", category: "performance", badge: "GTX1060",
     name: "GTX1060搭載 16インチ Core i7 モデル",
     specs: { CPU: "Core i7-6700HQ", GPU: "NVIDIA GeForce GTX1060", メモリ: "32GB（デュアルスロット）", ストレージ: "512GB SSD", ディスプレイ: "16インチ WUXGA 1920×1200", OS: "Windows 11 Pro / Office 2024" },
-    price: 80999, rating: 5.0, reviews: 2, asin: "B0H6CX1BWL", image: "https://m.media-amazon.com/images/I/71xOQjDVw-L._AC_SL1000_.jpg"
+    price: 80999, rating: 5.0, reviews: 2, asin: "B0H6CX1BWL", image: "images/B0H6CX1BWL.jpg", remote: "https://m.media-amazon.com/images/I/71xOQjDVw-L._AC_SL1000_.jpg"
   },
   {
     series: "3K DISPLAY 16", category: "business", badge: "3K 16:10",
     name: "16インチ 3K ディスプレイモデル",
     specs: { CPU: "Core i5-1038NG7", メモリ: "16GB DDR4", ストレージ: "512GB NVMe SSD", ディスプレイ: "16インチ 3K 3072×1920", OS: "Windows 11 Pro / Office 2024", 機能: "静音放熱 / 6000mAh / WiFi5" },
-    price: 69966, rating: 4.1, reviews: 9, asin: "B0FKTF3723", image: "https://m.media-amazon.com/images/I/71-D8OWZnZL._AC_SL1000_.jpg"
+    price: 69966, rating: 4.1, reviews: 9, asin: "B0FKTF3723", image: "images/B0FKTF3723.jpg", remote: "https://m.media-amazon.com/images/I/71-D8OWZnZL._AC_SL1000_.jpg"
   },
   {
     series: "TOUCH 16", category: "business", badge: "Touch",
     name: "16インチ タッチパネル Office 2024搭載",
     specs: { CPU: "Core i3-8109U", メモリ: "16GB DDR4", ストレージ: "512GB SSD", ディスプレイ: "16インチ タッチパネル", OS: "Windows 11 Pro / Office 2024", 機能: "顔認証 / 180度開閉 / 7色バックライト" },
-    price: 55966, rating: 4.1, reviews: 14, asin: "B0CW9C86BC", image: "https://m.media-amazon.com/images/I/81H1QWVS2VL._AC_SL1000_.jpg"
+    price: 55966, rating: 4.1, reviews: 14, asin: "B0CW9C86BC", image: "images/B0CW9C86BC.jpg", remote: "https://m.media-amazon.com/images/I/81H1QWVS2VL._AC_SL1000_.jpg"
   },
   {
     series: "ESSENTIAL 15.6", category: "entry", badge: "8000mAh",
     name: "15.6インチ AMD 3050E スタンダードモデル",
     specs: { CPU: "AMD 3050E", メモリ: "8GB", ストレージ: "256GB / 512GB SSD", ディスプレイ: "15.6インチ FHD IPS", OS: "Windows 11 Pro / Office 2024", 機能: "指紋認証 / テンキー / 8000mAh" },
-    price: 39990, rating: 4.4, reviews: 10, asin: "B0GCZJL488", image: "https://m.media-amazon.com/images/I/714zAU1wv5L._AC_SL1000_.jpg"
+    price: 39990, rating: 4.4, reviews: 10, asin: "B0GCZJL488", image: "images/B0GCZJL488.jpg", remote: "https://m.media-amazon.com/images/I/714zAU1wv5L._AC_SL1000_.jpg"
   }
 ];
 
 const LAPTOP_SVG = '<svg viewBox="0 0 240 150" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true" style="color:var(--muted)"><rect x="40" y="10" width="160" height="104" rx="6"/><rect x="48" y="18" width="144" height="88" rx="2" opacity=".5"/><path d="M14 122h212l-10 14H24z"/><path d="M104 122v4h32v-4"/></svg>';
+
+/* 画像の読み込み順: images/ 内のローカル画像 → Amazonの元画像 → 線画イラスト */
+function imgFallback(img) {
+  const remote = img.dataset.remote;
+  if (remote && img.src !== remote) { img.src = remote; return; }
+  img.replaceWith(document.createRange().createContextualFragment(LAPTOP_SVG));
+}
 
 const yen = n => "¥" + n.toLocaleString("ja-JP");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -606,7 +614,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 function card(p) {
   const href = p.asin ? dp(p.asin) : STORE;
   const media = p.image
-    ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy" onerror="this.replaceWith(document.createRange().createContextualFragment(LAPTOP_SVG))">'
+    ? '<img src="' + esc(p.image) + '" data-remote="' + esc(p.remote || "") + '" alt="' + esc(p.name) + '" loading="lazy" onerror="imgFallback(this)">'
     : LAPTOP_SVG;
   const rows = Object.entries(p.specs).map(([k, v]) => "<div><dt>" + esc(k) + "</dt><dd>" + esc(v) + "</dd></div>").join("");
   const price = p.price
